@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block body %}
+ <div class="page_content">
+
+ <div id="list">
+
+<div class="list-group  list_group_ul" id="list_group">
+    <a href="/news" class="list-group-item ">所有 </a>
+
+    {% for category in categorylist %}
+  <a href="getnewsofcategory?category={{category.id}}" class="list-group-item ">{{category.label}} </a>
+    {% endfor %}
+</div>
+
+<div class="right_page"  >
+    <div id="blog_detial">
+<h1>{{news.title}}</h1>
+<p>{{news.content}}</p>
+    <a>{{news.createtime}}</a>
+
+    </div>
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
