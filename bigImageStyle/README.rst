@@ -10,7 +10,6 @@
 
     url(r'', include('bigImageStyle.urls')),
 
-
 3.bigImageStyle AppInfo中的变量写入项目的base_settings 文件中：
 
     from bigImageStyle import AppInfo as xxx
@@ -28,6 +27,5 @@
         ...
         xxx.STYLE_NAME:AppInfo.STYLE_URL,
     }
-
 
 4.运行 `python manage.py migrate` 指令创建 bigImageStyle models.

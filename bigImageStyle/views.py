@@ -19,17 +19,15 @@ def bigimage(request):
     pageofmenulist = PageOfBigImageStyle.objects.get(menu_id=menu_id)
     menulist = Menu.objects.all().order_by('menuweight')
     try:
-        head = Head.objects.all()[0]
-        footer = Footer.objects.all()[0]
+       companyinfo = CompanyInfo.objects.all()[0]
     except:
-        head = []
-        footer = []
+        companyinfo = []
+
     print(pageofmenulist)
     return TemplateResponse(request,'styletwo.html',{
         'pageofmenulist':pageofmenulist,
         'menulist':menulist,
-        'head':head,
-        'footer':footer,
+        'companyinfo':companyinfo,
     })
 
 

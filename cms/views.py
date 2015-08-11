@@ -16,16 +16,13 @@ NEWS_OF_A_PAGE = 20
 
 def index(request):
     try:
-        head = Head.objects.all()[0]
-        footer = Footer.objects.all()[0]
+       companyinfo = CompanyInfo.objects.all()[0]
     except:
-        head = []
-        footer = []
+        companyinfo = []
     menulist = Menu.objects.all().order_by('menuweight')
     return TemplateResponse(request,'index.html',{
         'menulist':menulist,
-        'footer':footer,
-        'head':head,
+        'comapnyinfo':companyinfo,
     })
 
 def getnewslist(request):
@@ -43,18 +40,16 @@ def getnewslist(request):
         newslist = New.objects.all()
     categorylist = Category.objects.all()
     try:
-        head = Head.objects.all()[0]
-        footer = Footer.objects.all()[0]
+       companyinfo = CompanyInfo.objects.all()[0]
     except:
-        head = []
-        footer = []
+        companyinfo = []
+
     menulist = Menu.objects.all().order_by('menuweight')
     return TemplateResponse(request,'news.html',{
         'newslist':newslist,
         'menulist':menulist,
         'categorylist':categorylist,
-        'footer':footer,
-        'head':head,
+        'comapnyinfo':companyinfo,
     })
 
 def getnewsofcategory(requset,*args,**kwargs):
@@ -82,18 +77,16 @@ def getnewsofcategory(requset,*args,**kwargs):
     categorylist = Category.objects.all()
     print(newslist)
     try:
-        head = Head.objects.all()[0]
-        footer = Footer.objects.all()[0]
+       companyinfo = CompanyInfo.objects.all()[0]
     except:
-        head = []
-        footer = []
+        companyinfo = []
+
     menulist = Menu.objects.all().order_by('menuweight')
     return TemplateResponse(requset,'news.html',{
         'newslist':newslist,
         'categorylist':categorylist,
         'menulist':menulist,
-        'footer':footer,
-        'head':head,
+        'comapnyinfo':companyinfo,
     })
 
 
@@ -105,64 +98,18 @@ def getnewsdetial(request):
     menulist = Menu.objects.all().order_by('menuweight')
     news = New.objects.get(id=id)
     try:
-        head = Head.objects.all()[0]
-        footer = Footer.objects.all()[0]
+       companyinfo = CompanyInfo.objects.all()[0]
     except:
-        head = []
-        footer = []
+        companyinfo = []
 
     categorylist = Category.objects.all()
     return TemplateResponse(request,'newsdetial.html',{
         'news':news,
         'menulist':memulist,
-        'footer':footer,
-        'head':head,
+        'comapnyinfo':companyinfo,
         'categorylist':categorylist,
     })
 
-
-def styleone(request):
-    try:
-        menu_id = request.GET.get('menu_id')
-    except:
-        return HttpResponse('error')
-
-    pageofmenulist = PageOfStyleone.objects.filter(menu_id=menu_id)
-    menulist = Menu.objects.all().order_by('menuweight')
-    try:
-        head = Head.objects.all()[0]
-        footer = Footer.objects.all()[0]
-    except:
-        head = []
-        footer = []
-    return TemplateResponse(request,'pageofmenu.html',{
-        'pageofmenulist':pageofmenulist,
-        'menulist':menulist,
-        'head':head,
-        'footer':footer,
-    })
-
-
-def styletwo(request):
-    try:
-        menu_id = request.GET.get('menu_id')
-    except:
-        return HttpResponse('error')
-
-    pageofmenulist = PageOfStyletwo.objects.get(menu_id=menu_id)
-    menulist = Menu.objects.all().order_by('menuweight')
-    try:
-        head = Head.objects.all()[0]
-        footer = Footer.objects.all()[0]
-    except:
-        head = []
-        footer = []
-    return TemplateResponse(request,'styletwo.html',{
-        'pageofmenulist':pageofmenulist,
-        'menulist':menulist,
-        'head':head,
-        'footer':footer,
-    })
 
 
 

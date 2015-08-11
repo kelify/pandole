@@ -21,16 +21,13 @@ def sidebar(request):
     pageofSoderbarlist = PageOfSidebar.objects.filter(menu_id=menu_id)
     menulist = Menu.objects.all().order_by('menuweight')
     try:
-        head = Head.objects.all()[0]
-        footer = Footer.objects.all()[0]
+       companyinfo = CompanyInfo.objects.all()[0]
     except:
-        head = []
-        footer = []
+        companyinfo = []
     return TemplateResponse(request,'pageofmenu.html',{
         'pageofmenulist':pageofSoderbarlist,
         'menulist':menulist,
-        'head':head,
-        'footer':footer,
+        'companyinfo':companyinfo,
     })
 
 

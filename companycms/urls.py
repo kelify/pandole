@@ -21,8 +21,6 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'news/$',getnewslist),
     url(r'getnewsofcategory',getnewsofcategory),
-    url(r'styleone',styleone),
-    url(r'styletwo',styletwo),
     url(r'getnewsdetial',getnewsdetial),
 
     url(r'', include('sidebarStyle.urls')),

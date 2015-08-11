@@ -14,14 +14,14 @@ class Category(models.Model):
     def __str__(self):
         return self.label
 
-class Head (models.Model):
-    company_name = models.CharField(max_length = 30)
-    company_logo = models.FileField(upload_to = "static/file")
-
-class Footer(models.Model):
-    company_name = models.CharField(max_length = 30 )
-    company_date_range = models.CharField(max_length = 10)
-    company_signature = models.CharField(max_length = 20 )
+class CompanyInfo (models.Model):
+    company_name = models.CharField(verbose_name="企业名称",max_length = 30)
+    company_logo = models.FileField(verbose_name="企业logo",upload_to = "static/file")
+    company_date_range = models.CharField(verbose_name="企业创立年份",max_length = 10)
+    company_signature = models.CharField(verbose_name="企业签名",blank= True,max_length = 20 )
+    class Meta:
+        verbose_name = "企业信息"
+        verbose_name_plural = "企业信息"
 
 class  New (models.Model):
     title = models.CharField(max_length = 100)

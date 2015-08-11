@@ -9,4 +9,6 @@ class SidebarAdmin(admin.ModelAdmin):
     list_display = [ 'label',]
     readonly_fields = ['label']
 
+    def has_add_permission(self, request):
+        return  False
 admin.site.register(Sidebar,SidebarAdmin)
