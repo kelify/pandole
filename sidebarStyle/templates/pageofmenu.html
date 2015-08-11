@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block body %}
+ <div class="page_content">
+
+ <div id="list">
+
+<div class="list-group  list_group_ul" id="list_group">
+
+    {% for pageofmenu in pageofmenulist %}
+  <a href="" class="list-group-item " id="label{{pageofmenu.id}}">{{pageofmenu.label}} </a>
+    {% endfor %}
+</div>
+
+<div class="right_page"  >
+<div>
+      {% for pageofmenu in pageofmenulist %}
+    <p id="labeltext">{{pageofmenu.label}} ： </p>
+         <p>{{pageofmenu.content}}</p>
+         <br>
+         <hr>
+         {% endfor %}
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

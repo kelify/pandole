@@ -1,6 +1,7 @@
 #coding:utf-8
 from django.db import models
-
+from companycms.base_settings import  STYLE,STYLE_LIST,STYLE_URL_LIST
+from sidebarStyle.models import *
 from markdown import markdown
 
 class Category(models.Model):
@@ -42,11 +43,7 @@ class  New (models.Model):
         return self.title
 
 class Menu(models.Model):
-    STYLE = (
-        ('1', '风格一'),
-        ('2', '风格二'),
-    )
-    style = models.CharField(verbose_name="菜单风格",max_length = 1 ,choices = STYLE)
+    style = models.CharField(verbose_name="菜单风格",max_length = 10 ,choices = STYLE)
     label = models.CharField(verbose_name="菜单名称",max_length = 20)
     menurl = models.CharField(max_length = 50,blank = True,null = True)
     menuweight = models.IntegerField(verbose_name="菜单排序",)
@@ -58,12 +55,9 @@ class Menu(models.Model):
 
     def save(self):
         if self.pk == None:
-            stylelist = [Styleone,Styletwo]
-            menurllist = ['styleone','styletwo']
-            self.menurl = menurllist[int(self.style) - 1]
+            self.menurl = STYLE_URL_LIST[self.style]
             super(Menu,self).save()
-            print(int(self.style) - 1)
-            style = stylelist[int(self.style) - 1](label=self.label,menu = self)
+            style = STYLE_LIST[self.style](label=self.label)
             style.save()
             menu = Menu.objects.get(id = self.pk)
             menu.styleid = style.pk

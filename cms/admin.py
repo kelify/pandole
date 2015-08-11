@@ -65,8 +65,8 @@ class MenuAdmin(admin.ModelAdmin):
 admin.site.register(New,NewAdmin)
 admin.site.register(Footer,FooterAdmin)
 admin.site.register(Head,HeadAdmin)
-admin.site.register(Styleone,StyleoneAdmin)
+#admin.site.register(Styleone,StyleoneAdmin)
 admin.site.register(Menu,MenuAdmin)
-admin.site.register(Styletwo,StyletwoAdmin)
+#admin.site.register(Styletwo,StyletwoAdmin)
 admin.site.register(Category,CategoryAdmin)
 
