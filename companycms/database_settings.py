@@ -2,8 +2,8 @@
 database_settings = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'companycms',
-        'PASSWORD':'panshen',
-        'USER':'guankai',
-        'PORT':'3306',
+        'PASSWORD':'hhxxttxs',
+        'USER':'root',
+        'PORT':'',
         'DEFAULT_CHARSET':'utf-8'
 }

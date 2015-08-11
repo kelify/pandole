@@ -4,32 +4,37 @@ from cms.models import *
 
 
 # Create your views here.
+from django.shortcuts import render
+from django.http  import HttpResponse
+from django.template import loader ,Context
+from cms.models import *
+import operator
+
+ # Create your views here.
 NEWS_OF_A_PAGE = 20
 
 
-def index(request):
+
+index(request):
     try:
-        head = Head.objects.all()[0]
-        footer = Footer.objects.all()[0]
+        companyinfo = CompanyInfo.objects.all()[0]
         FC = FooterContent.objects.all()
         Img = ImageRun.objects.all()
     except:
-        head = []
-        footer = []
+        companyinfo = []
     menulist = Menu.objects.all().order_by('menuweight')
     return TemplateResponse(request,'index.html',{
         'menulist':menulist,
-        'footer':footer,
-        'head':head,
         'FCL1':FC[0],
         'FCL2':FC[1],
         'FCL3':FC[2],
         'Img1':Img[0],
         'Img2':Img[1],
         'Img3':Img[2],
+        'companyinfo':companyinfo,
     })
-
-def getnewslist(request):
+ 
+getnewslist(request):
     try:
         if 'load' in  request.GET.keys():
             load = request.GET.key('load')
@@ -44,18 +49,16 @@ def getnewslist(request):
         newslist = New.objects.all()
     categorylist = Category.objects.all()
     try:
-        head = Head.objects.all()[0]
-        footer = Footer.objects.all()[0]
+       companyinfo = CompanyInfo.objects.all()[0]
     except:
-        head = []
-        footer = []
+        companyinfo = []
+
     menulist = Menu.objects.all().order_by('menuweight')
     return TemplateResponse(request,'news.html',{
         'newslist':newslist,
         'menulist':menulist,
         'categorylist':categorylist,
-        'footer':footer,
-        'head':head,
+        'comapnyinfo':companyinfo,
     })
 
 def getnewsofcategory(requset,*args,**kwargs):
@@ -83,18 +86,16 @@ def getnewsofcategory(requset,*args,**kwargs):
     categorylist = Category.objects.all()
     print(newslist)
     try:
-        head = Head.objects.all()[0]
-        footer = Footer.objects.all()[0]
+       companyinfo = CompanyInfo.objects.all()[0]
     except:
-        head = []
-        footer = []
+        companyinfo = []
+
     menulist = Menu.objects.all().order_by('menuweight')
     return TemplateResponse(requset,'news.html',{
         'newslist':newslist,
         'categorylist':categorylist,
         'menulist':menulist,
-        'footer':footer,
-        'head':head,
+        'comapnyinfo':companyinfo,
     })
 
 
@@ -106,22 +107,20 @@ def getnewsdetial(request):
     menulist = Menu.objects.all().order_by('menuweight')
     news = New.objects.get(id=id)
     try:
-        head = Head.objects.all()[0]
-        footer = Footer.objects.all()[0]
+       companyinfo = CompanyInfo.objects.all()[0]
     except:
-        head = []
-        footer = []
+        companyinfo = []
 
     categorylist = Category.objects.all()
     return TemplateResponse(request,'newsdetial.html',{
         'news':news,
         'menulist':memulist,
-        'footer':footer,
-        'head':head,
+        'comapnyinfo':companyinfo,
         'categorylist':categorylist,
     })
 
 
+<<<<<<< HEAD
 def styleone(request):
     try:
         menu_id = request.GET.get('menu_id')
@@ -165,6 +164,8 @@ def styletwo(request):
         'footer':footer,
     })
 
+=======
+>>>>>>> 15b7118d1f83265826853fedc8ccc754d6506682
 
 
 

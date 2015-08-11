@@ -15,26 +15,17 @@ class NewAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     list_filter = ('title',)
 
-class FooterAdmin(admin.ModelAdmin):
+
+class CompanyInfoAdmin(admin.ModelAdmin):
     list_display = ('company_name',)
+    def has_add_permission(self, request):
+        if len(CompanyInfo.objects.all())>=1:
+            return  False
+        else :
+            return True
 
-class HeadAdmin(admin.ModelAdmin):
-    list_display = ('company_name',)
 
-class PageOfStyleoneInline(admin.StackedInline):
-    model = PageOfStyleone
-    extra = 1
 
-class StyleoneAdmin(admin.ModelAdmin):
-    inlines = (PageOfStyleoneInline,)
-    list_display = ('label',)
-
-class PageOfStyletwoInline(admin.StackedInline):
-    model = PageOfStyletwo
-    extra = 0
-class StyletwoAdmin(admin.ModelAdmin):
-    inlines = (PageOfStyletwoInline,)
-    list_display = ('label',)
 
 class MenuAdmin(admin.ModelAdmin):
     list_display = ('label',)
@@ -75,11 +66,11 @@ class FooterContentAdmin(admin.ModelAdmin):
 
 admin.site.register(ImageRun,ImageRunAdmin)
 admin.site.register(FooterContent,FooterContentAdmin)
+
 admin.site.register(New,NewAdmin)
-admin.site.register(Footer,FooterAdmin)
-admin.site.register(Head,HeadAdmin)
-admin.site.register(Styleone,StyleoneAdmin)
+#admin.site.register(Styleone,StyleoneAdmin)
+admin.site.register(CompanyInfo,CompanyInfoAdmin)
+#admin.site.register(Styletwo,StyletwoAdmin)
 admin.site.register(Menu,MenuAdmin)
-admin.site.register(Styletwo,StyletwoAdmin)
 admin.site.register(Category,CategoryAdmin)
 

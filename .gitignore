@@ -1,0 +1,7 @@
+migrations/
+__pycache__/
+.git/
+.idea/
+*.py[cod~]
+*.css~
+*.html~

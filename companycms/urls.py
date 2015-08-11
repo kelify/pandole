@@ -16,12 +16,15 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from cms.views import *
+from sidebarStyle.views import sidebar
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^news/$',getnewslist),
+    url(r'news/$',getnewslist),
     url(r'getnewsofcategory',getnewsofcategory),
-    url(r'styleone',styleone),
-    url(r'styletwo',styletwo),
     url(r'getnewsdetial',getnewsdetial),
+
+    url(r'', include('sidebarStyle.urls')),
+    url(r'', include('bigImageStyle.urls')),
+    url(r'^$',index),
     url(r'',index),
 ]
