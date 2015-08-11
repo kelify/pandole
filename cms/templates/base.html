@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>欢迎来到{{head.company_name}} 的主页</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../static/css/style.css" type="text/css" media="screen" />
+    <script src="/static/jquery/jquery-2.1.1.min.js"></script>
+<script type="text/javascript">
+
+    $(function()
+    {
+         $(#btn1).click(function(){
+            $(#test).ajax("/static/test.txt")
+            });
+     })
+
+</script>
+  </head>
+
+  <div id="container">
+  <body>
+
+ <header class="main-header"  style="background-image:)">
+        <div class="container">
+        
+                <div id="head" >
+                    <!-- start logo -->
+             <a class="branding"  title="Ghost 开源博客平台"><img  height="60" width="60"  src="/{{head.company_logo}}" ></a>
+                    <!-- end logo -->
+            <h1 style="float: right ; margin-left:20px"> {{head.company_name}} </h1>
+                </div>
+        </div>
+    </header>
+    <!-- end header -->
+<ul class="nav nav-pills nav_bgd" id="nav"  role="navigation">
+
+  <li><a href="/">主页</a></li>
+  <li><a href="/news">新闻</a></li>
+
+    {% for menu in menulist %}
+       <li><a href="/{{menu.menurl}}?menu_id={{menu.styleid}}">{{menu.label}}</a></li>
+    {% endfor %}
+
+
+</ul>
+ {% block body %}
+
+ {% endblock %}
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  </body>
+
+<footer >
+<div id="footer">
+    <p>{{footer.company_date_range}}</p>
+    {{footer.company_name}}
+    {{footer.company_signature}}
+</div>
+    </div>
+</footer>
+</html>

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block body %}
+ <div class="page_content">
+
+ <div id="list">
+
+<div class="list-group  list_group_ul" id="list_group">
+    <a href="/news" class="list-group-item ">所有 </a>
+
+    {% for category in categorylist %}
+  <a href="getnewsofcategory?category={{category.id}}" class="list-group-item ">{{category.label}} </a>
+    {% endfor %}
+</div>
+
+<div class="right_page" id="right_page" >
+
+<div class="row"  id="news">
+    {% for new in newslist %}
+
+      <div class="news-box"  id="newsdetial">
+        <h3>{{new.title}}</h3>
+        <p>{{new.content|striptags|slice:"100"}}</p>
+          <a href="getnewsdetial?id={{new.id}}" class="btn btn-primary" role="button">查看</a>
+      </div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</div>
+ <a href="" class="btn btn-primary" role="button">加载更多</a>
+</div>
+
+{% endblock %}
