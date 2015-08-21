@@ -3,5 +3,5 @@
 2,所需要插件 markdown ，django-suit
     sudo pip install markdown 
     sudo pip install django-suit
-
+install it 
 
