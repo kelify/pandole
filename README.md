@@ -5,3 +5,4 @@
     sudo pip install django-suit
 install it 
 today is fine 
+test stage
