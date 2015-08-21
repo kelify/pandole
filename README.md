@@ -4,4 +4,4 @@
     sudo pip install markdown 
     sudo pip install django-suit
 install it 
-
+today is fine 
